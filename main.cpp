@@ -124,19 +124,19 @@ class Board {
     void printBoard(){
         cout << (char) 10;
         for(int oo=0;oo<33;oo++) 
-            cout << (char) (oo==32? 191 : (oo==0 ? 218 : (oo%4==0? 194 : 196)));
+            cout << (oo==32? "\u2513" : (oo==0 ? "\u250F" : (oo%4==0? "\u2533" : "\u2501")));
         for(int i=7;i>=0;i--){
-            cout << (char) 10 << (char) 179 << " ";
+            cout << (char) 10 << "\u2503" << " ";
             for(int j=0;j<8;j++){
                 Piece* p=board[i][j].getPtr();
-                if(p) cout << (p->getType() == 1? (p->getTeam() ? "\033[1;31mP\033[0m" : "\033[1;32mP\033[0m") : (p->getTeam() ? "\033[1;31mK\033[0m" : "\033[1;32mK\033[0m")) << " " << (char) 179 << " ";
-                else cout << "  " << (char) 179 << " ";
+                if(p) cout << (p->getType() == 1? (p->getTeam() ? "\033[1;31mP\033[0m" : "\033[1;32mP\033[0m") : (p->getTeam() ? "\033[1;31mK\033[0m" : "\033[1;32mK\033[0m")) << " " << "\u2503" << " ";
+                else cout << "  " << "\u2503" << " ";
             }
             cout << "\033[1;36m" << (char) (i+'1') << "\033[0m";
             cout << (char) 10; 
             for(int oo=0;oo<33;oo++) {
-                if(!i) cout << (char) (oo==32? 217 : (oo==0 ? 192 : (oo%4==0? 193 : 196)));
-                else cout << (char) (oo==32? 180 : (oo==0 ? 195 : (oo%4==0? 197 : 196)));
+                if(!i) cout << (oo==32? "\u251B" : (oo==0 ? "\u2517" : (oo%4==0? "\u253B" : "\u2501")));
+                else cout << (oo==32? "\u252B" : (oo==0 ? "\u2523" : (oo%4==0? "\u254B" : "\u2501")));
             }
         }
         cout << (char) 10 << "\033[1;36m";
@@ -156,7 +156,7 @@ class Board {
             if(p.size()!=2)
                 continue;
             if(p[0]-'A'>7 || p[0]-'A'<0 || p[1]-'1'>7 || p[1]-'1'<0){
-                cout << "Lugar inv??lido" << (char) 10;
+                cout << "Lugar invalido" << (char) 10;
                 continue;
             }
             int x=p[0]-'A', y=p[1]-'1';
