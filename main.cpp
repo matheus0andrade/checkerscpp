@@ -30,9 +30,9 @@ class King : public Piece {
     vector<string> getMoves(Space** board, int curX, int curY);
 };
 class Space {
-    Piece* ptr=nullptr;
+    Piece* ptr=NULL;
   public:
-    void setPtrEmpty(Piece* p) {ptr=nullptr;}
+    void setPtrEmpty(Piece* p) {ptr=NULL;}
     void setPtr(Man *m) { ptr=m;}
     void setPtr(King *k) { ptr=k;}
     Piece* getPtr(){return ptr;}
@@ -51,7 +51,7 @@ class Board {
         if(((x1-x0)*(x1-x0)+(y1-y0)*(y1-y0)) > 2){
             if(board[x1-(x1>x0 ? 1 : -1)][y1-(y1>y0 ? 1 : -1)].getPtr()){
                 delete (board[x1-(x1>x0 ? 1 : -1)][y1-(y1>y0 ? 1 : -1)].getPtr());
-                board[x1-(x1>x0 ? 1 : -1)][y1-(y1>y0 ? 1 : -1)].setPtrEmpty(nullptr);
+                board[x1-(x1>x0 ? 1 : -1)][y1-(y1>y0 ? 1 : -1)].setPtrEmpty(NULL);
             }
         }
         whoToMove^=true;
